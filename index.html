@@ -150,12 +150,18 @@
             _totalPoint = parseFloat(_point1) + parseFloat(_point2) + parseFloat(_point3) + parseFloat(_point4) + _fourth;
         }
         var _overallPoint = _totalPoint / 4;
-        if(_overallPoint> 5.00){
+        if(isNaN(_overallPoint) == true){
+            alert('Fill Values Properly');
+        }
+        else{
+            if(_overallPoint> 5.00){
             document.getElementById('overall_Point').innerHTML = "Overall Point With Fourth Subject: 5.00";
         }
         else{
             document.getElementById('overall_Point').innerHTML = "Overall Point With Fourth Subject: "+_overallPoint;
         }
+        }
+        
         document.getElementById('fail').innerHTML= '"Note That If you Fail In Any Subject The Total Result Is Failed."'
     }
 </script>
