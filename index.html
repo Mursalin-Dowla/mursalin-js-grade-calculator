@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1" align="center" cellspacing="0" cellpadding="10px" style="border: 1px solid blue;background-color: antiquewhite;">
+      <thead style="color: red; font-size: 20px;">
+        <tr>
+          <th>Subject</th>
+          <th>Code</th>
+          <th>Theory</th>
+          <th>Practical</th>
+          <th>Total</th>
+          <th>Grade</th>
+          <th>Point</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bangla</td>
+          <td>101</td>
+          <td><input type="text" id="tMark1" /></td>
+          <td><input type="text" id="pMark1" /></td>
+          <td><input type="text" id="total1" /></td>
+          <td><input type="text" id="grade1" /></td>
+          <td><input type="text" id="point1" /></td>
+          <td><button onclick="calculateResult(1);">Result</button></td>
+        </tr>
+        <tr>
+            <td>English</td>
+            <td>201</td>
+            <td><input type="text" id="tMark2" /></td>
+            <td><input type="text" id="pMark2" /></td>
+            <td><input type="text" id="total2" /></td>
+            <td><input type="text" id="grade2" /></td>
+            <td><input type="text" id="point2" /></td>
+            <td><button onclick="calculateResult(2);">Result</button></td>
+          </tr>
+          <tr>
+            <td>Science</td>
+            <td>301</td>
+            <td><input type="text" id="tMark3" /></td>
+            <td><input type="text" id="pMark3" /></td>
+            <td><input type="text" id="total3" /></td>
+            <td><input type="text" id="grade3" /></td>
+            <td><input type="text" id="point3" /></td>
+            <td><button onclick="calculateResult(3);">Result</button></td>
+          </tr>
+          <tr>
+            <td>Social</td>
+            <td>401</td>
+            <td><input type="text" id="tMark4" /></td>
+            <td><input type="text" id="pMark4" /></td>
+            <td><input type="text" id="total4" /></td>
+            <td><input type="text" id="grade4" /></td>
+            <td><input type="text" id="point4" /></td>
+            <td><button onclick="calculateResult(4);">Result</button></td>
+          </tr>
+          <tr>
+            <td>Fourth Sub:Math</td>
+            <td>501</td>
+            <td><input type="text" id="tMark5" /></td>
+            <td><input type="text" id="pMark5" /></td>
+            <td><input type="text" id="total5" /></td>
+            <td><input type="text" id="grade5" /></td>
+            <td><input type="text" id="point5" /></td>
+            <td><button onclick="calculateResult(5);">Result</button></td>
+          </tr>
+      </tbody>
+    </table>
+    <div style="width: 50%; margin: auto; padding-top: 20px;">
+        <button style="text-align: center; padding: 10px; background-color: rgb(255, 0, 0); border-radius: 10%; font-size: 20px; color: rgb(255, 255, 255);" onclick="showOverallRes();">Show Overall Result</button>
+
+        <h1 id="overall_Point" style="color: blue;"> </h1>
+    </div>
+    
+  </body>
+</html>
+
+<script>
+    function calculateResult(num){
+       var _tMark = document.getElementById('tMark'+num).value;
+       var _pMark = document.getElementById('pMark'+num).value;
+       var _total = parseInt(_tMark) + parseInt(_pMark);
+       
+
+       if(_total >= 80 && _total <= 100){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "A+";
+        document.getElementById('point'+num).value = "5.00";
+       }
+       else if(_total >= 70 && _total <= 79){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "A";
+        document.getElementById('point'+num).value = "4.00";
+       }
+       else if(_total >= 60 && _total <= 69){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "A-";
+        document.getElementById('point'+num).value = "3.50";
+       }
+       else if(_total >= 50 && _total <= 59){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "B";
+        document.getElementById('point'+num).value = "3.00";
+       }
+       else if(_total >= 40 && _total <= 49){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "C";
+        document.getElementById('point'+num).value = "2.00";
+       }
+       else if(_total >= 33 && _total <= 39){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "D";
+        document.getElementById('point'+num).value = "1.00";
+       }
+       else if(_total >= 0 && _total <= 32){
+        document.getElementById('total'+num).value = _total;
+        document.getElementById('grade'+num).value = "F";
+        document.getElementById('point'+num).value = "0.00";
+       }
+       else{
+        alert('Invalid Entry');
+       }
+     
+    }
+    function showOverallRes(){
+        var _point1 = document.getElementById('point1').value;
+        var _point2 = document.getElementById('point2').value;
+        var _point3 = document.getElementById('point3').value;
+        var _point4 = document.getElementById('point4').value;
+        var _point5 = document.getElementById('point5').value;
+        var _fourth = parseFloat(_point5) - 2.00;
+
+        var _totalPoint;
+
+        if(_fourth < 2.00){
+            _totalPoint = parseFloat(_point1) + parseFloat(_point2) + parseFloat(_point3) + parseFloat(_point4);
+        }
+        else{
+            _totalPoint = parseFloat(_point1) + parseFloat(_point2) + parseFloat(_point3) + parseFloat(_point4) + _fourth;
+        }
+        var _overallPoint = _totalPoint / 4;
+        if(_overallPoint> 5.00){
+            document.getElementById('overall_Point').innerHTML = "Overall Point With Fourth Subject: 5.00";
+        }
+        else{
+            document.getElementById('overall_Point').innerHTML = "Overall Point With Fourth Subject: "+_overallPoint;
+        }
+        
+    }
+</script>
